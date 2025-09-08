@@ -2,93 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navbar with Shop Icon & Modal</title>
+  <title>UL Test</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100">
-
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md px-6 py-4 flex items-center justify-between">
-    
-    <!-- Logo -->
-    <div class="text-2xl font-bold text-blue-600">MyShop</div>
-    
-    <!-- Menu -->
-    <div class="hidden md:flex space-x-6 text-gray-700 font-medium">
-      <a href="#" class="hover:text-blue-600">Home</a>
-      <a href="#" class="hover:text-blue-600">Products</a>
-      <a href="#" class="hover:text-blue-600">About</a>
-      <a href="#" class="hover:text-blue-600">Contact</a>
-    </div>
-
-    <!-- Shop Cart Icon -->
-    <div class="relative">
-      <button onclick="toggleModal(true)">
-        <!-- Cart Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-700 hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2 9m5-9v9m6-9v9m2-18h-6" />
-        </svg>
-        <!-- Badge -->
-        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-          3
-        </span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Example Page Content -->
-  <div class="p-6 text-center">
-    <h1 class="text-3xl font-bold text-gray-800">Welcome to MyShop</h1>
-    <p class="mt-2 text-gray-600">Your favorite products at the best price.</p>
-  </div>
-
-  <!-- Modal (hidden by default) -->
-  <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-    <div class="bg-white rounded-lg shadow-lg w-96 p-6 relative">
-      <!-- Close button -->
-      <button class="absolute top-2 right-2 text-gray-600 hover:text-red-500" onclick="toggleModal(false)">
-        ✖
-      </button>
-
-      <h2 class="text-2xl font-bold mb-4">🛒 Your Cart</h2>
-      
-      <div class="space-y-3">
-        <div class="flex justify-between items-center border-b pb-2">
-          <span>Product 1</span>
-          <span class="font-semibold">$20</span>
-        </div>
-        <div class="flex justify-between items-center border-b pb-2">
-          <span>Product 2</span>
-          <span class="font-semibold">$15</span>
-        </div>
-      </div>
-
-      <div class="mt-4 flex justify-between font-bold text-lg">
-        <span>Total</span>
-        <span>$35</span>
-      </div>
-
-      <button class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-        Checkout
-      </button>
-    </div>
-  </div>
-
-  <!-- Script for modal -->
-  <script>
-    function toggleModal(show) {
-      const modal = document.getElementById('cartModal');
-      if (show) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex'); // make it flexbox centered
-      } else {
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-      }
-    }
-  </script>
-
+<body class="p-6">
+  <ul class="py-4 text-[12px] font-light list-disc list-inside text-black bg-yellow-100">
+    <li>Provident cupiditate voluptatem et in.</li>
+    <li>Provident cupiditate voluptatem et in quasi. In deleniti eaque aut repudiandae et a id nisi.</li>
+  </ul>
 </body>
 </html>
