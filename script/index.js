@@ -1,6 +1,6 @@
 const categoryContainer = document.getElementById('js-catgory-container');
 const plantContainer = document.getElementById('js-plant-container');
-const shopCart = document.getElementById('js-shop-cart');
+const shopCart = document.querySelectorAll('.js-shop-cart');
 let showCart = [];
 const removeActive = () => {
 
@@ -8,7 +8,20 @@ const removeActive = () => {
     //   console.log(lessonButtons);
     catButton.forEach((btn) => btn.classList.remove("active"));
 };
+function toggleModal(show) {
 
+    
+    const modal = document.getElementById('cartModal');
+
+    
+    if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex'); // make it flexbox centered
+    } else {
+        modal.classList.remove('flex');
+        modal.classList.add('hidden');
+    }
+}
 
 const loadAllCategory = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
@@ -108,17 +121,25 @@ plantContainer.addEventListener("click", function (e) {
 
 })
 let totalPrice = 0
+let qnt=0;
 const handleShopcarts = (e) => {
     const treeName = e.target.parentNode.children[0].innerText;
 
     const treePrice = e.target.parentNode.children[2].children[1].children[0].innerText;
-     const uniqueTreeId=e.target.parentNode.children[0].id;
+    const uniqueTreeId = e.target.parentNode.children[0].id;
+    const count=document.getElementById("js-shopCart-count").innerText;
+
+    qnt=Number(count)+1;
+    document.getElementById("js-shopCart-count").innerText=qnt;
+    totalPrice = totalPrice + Number(treePrice);
+
+    const newTotalPrice = document.querySelectorAll(".js-total-price");
+    newTotalPrice.forEach(ele=>{
+        ele.innerText=totalPrice;
+        
+    })
+    
      
-
-     totalPrice = totalPrice +Number( treePrice);
-
-
-    document.getElementById('js-total-price').innerText = totalPrice;
 
 
 
@@ -133,32 +154,35 @@ const handleShopcarts = (e) => {
 };
 
 const showCartDetail = (showCart) => {
-    shopCart.innerHTML = '';
+   
 
+    shopCart.forEach(ele=>{
 
-
-    showCart.forEach(showCart => {
-        shopCart.innerHTML += `
-                  <div class="bg-[#dcfce7] p-4 rounded-lg mb-4">
-                        <div class="flex justify-between items-center">
-                            <div>
-               
-                                 <h1 class="text-[14px] font-semibold">${showCart.treeName}</h1>
-                                    <p class=" text-gray-500 text-[14px] font-medium ">৳ <span id="js-inicialPrice">${showCart.treePrice}</span>X
-                                             <span id="js-qnt">1</span>
-                                    </p>
-                             </div>
-                                   <i class="fa-solid fa-xmark text-red-700"></i>
-                         </div>
-                    </div>                        
+            ele.innerHTML = '';
+            showCart.forEach(showCart => {
+                ele.innerHTML += `
+                          <div class="bg-[#dcfce7]  p-4 rounded-lg mb-4">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                       
+                                         <h1 class="text-[14px] font-semibold">${showCart.treeName}</h1>
+                                            <p class=" text-gray-500 text-[14px] font-medium ">৳ <span id="js-inicialPrice">${showCart.treePrice}</span>X
+                                                     <span id="js-qnt">1</span>
+                                            </p>
+                                     </div>
+                                           <i class="fa-solid fa-xmark text-red-700"></i>
+                                 </div>
+                            </div>                        
+                
+                            `
         
-                    `
-                    
-       
         
-       
-
-    });
+        
+        
+        
+            });
+    })
+    
 
 
 
@@ -185,19 +209,19 @@ const displayAllPlants = (plants) => {
     plants.forEach((plant) => {
         plantContainer.innerHTML += `     <div class="card bg-base-100 shadow-sm ">
                         <figure class="p-3">
-                            <img class="w-96 h-50 rounded-md" src=${plant.image}
+                            <img class="w-96 h-64 md:h-40 rounded-md" src=${plant.image}
                                 alt="plantimages" />
                         </figure>
                         <div class=" text-start px-3 ">
                             
                             <h2 id="${plant.id}" onclick=" loadPlant(${plant.id})"  class="card-title text-[14px] cursor-pointer">${plant.name}</h2>
-                            <p class="font-light  text-[12px] py-3 pb-4 h-24">${plant.description}</p>
+                            <p class="font-light  text-[12px] py-3 pb-4 md:h-[111px]">${plant.description}</p>
                              <div class=" flex justify-between pb-3 ">
                                 <button class="  btn btn-sm bg-[#dcfce7] text-[#15803D] rounded-[999px]  border-none">${plant.category}</button>
                                 <p class=" text-[14px] ">৳  <span>${plant.price}</span></p>
 
                              </div>
-                             <button class="btn cartBtn rounded-[999px]  border-none w-full my-3 hover:bg-[#27d564e1] bg-[#15803D]  text-white">Add to Cart</button>
+                             <button class="btn cartBtn rounded-[999px]  border-none w-full mt-0 mb-3 hover:bg-[#27d564e1] bg-[#15803D]  text-white">Add to Cart</button>
                         </div>
                     </div>
                `
@@ -226,7 +250,7 @@ const displayCategory = (categories) => {
         categoryContainer.innerHTML += ` 
         
                         <button id="cat-btn-${cat.id}"
-                        onclick="loadCategory(${cat.id})" class="btn flex justify-start pl-2 bg-[#dcfce7] border-none w-full mb-1 hover:bg-[#27d564cd] hover:text-white catButton">${cat.category_name}</button>`
+                        onclick="loadCategory(${cat.id})" class="btn flex justify-center md:justify-start pl-2 bg-[#dcfce7] border-none w-full mb-1 hover:bg-[#27d564cd] hover:text-white catButton">${cat.category_name}</button>`
 
     });
 

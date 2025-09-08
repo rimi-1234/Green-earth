@@ -19,11 +19,11 @@
 </head>
 
 <body class="inter-font-family bg-[#CFF0DC]">
-    <header class="bg-[#15803D] ">
-        <div class="navbar bg-base-100  w-11/12 mx-auto bg-[#15803D] ">
+    <header class="bg-[#15803D] max-w-[2040px] mx-auto">
+        <div class="navbar bg-base-100  w-15/16 mx-auto bg-[#15803D] ">
             <div class="navbar-start">
                 <div class="dropdown ">
-                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle  lg:hidden ">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle text-white  lg:hidden ">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,10 +31,13 @@
                         </svg>
                     </div>
                     <ul tabindex="0"
-                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        class="menu menu-sm flex flex-col items-center dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><a>About</a></li>
                         <li><a>Gallery</a></li>
                         <li><a>Plant a Tree</a></li>
+                        <button
+                            class=" w-full p-2  bg-[#FACC15] hover:bg-[#facc15d5] cursor-pointer rounded-lg border-none text-[#15803D]">Plant
+                            a Tree</button>
                     </ul>
                 </div>
                 <h1 class="text-white text-xl font-semibold t">Green Earth</h1>
@@ -48,18 +51,39 @@
                 </ul>
             </div>
             <div class="navbar-end">
-                <button class="btn bg-[#FACC15] rounded-[999px] border-none text-[#15803D]">Plant a Tree</button>
+                <button
+                    class="btn hidden md:flex  bg-[#FACC15] hover:bg-[#facc15d5]  rounded-[999px] border-none text-[#15803D]">Plant
+                    a Tree</button>
+                <div class="relative md:hidden">
+                    <button onclick="toggleModal(true)">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-900" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2 9m5-9v9m6-9v9m2-18h-6" />
+                        </svg>
+
+                        <span id="js-shopCart-count"
+                            class="absolute -top-2 -right-2 bg-[#FACC15] text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                            0
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
-    <main class="">
+    <main class="max-w-[1640px] mx-auto bg-[#CFF0DC]">
+
         <section
-            class="hero min-h-[350px]  bg-none md:bg-[url('./assets/hero-leaf1.png')] md:w-96 md:h-64 z-20 md:ml-20 relative">
-            <div class="hero-content text-center ">
-                <div class=" max-w-full md:w-[1500px] md:pl-[500px]">
+            class="hero min-h-[640px] md:min-h-[350px]  bg-none   md:bg-[url('./assets/hero-leaf1.png')] md:bg-left md:w-[500px] md:h-64 z-20  md:pl-40 relative">
+            <div
+                class=" md:bg-none bg-[url('./assets/hero-leaf1.png')] bg-right  h-56 w-64 -left-3 top-4  absolute rotate-90  ">
+            </div>
+            <div class="hero-content text-center  w-screen ">
+                <div class=" max-w-full md:w-full md:">
                     <h1 class="text-5xl text-[#1f2937] font-bold">Plant a Tree, Grow a Future</h1>
                     <p class="py-6 text-[#1f2937] font-light">
-                        Join our mission to plant 1 million trees and make the Earth greener for future generations.
+                        Join our mission to plant 1 million trees and make the Earth greener for future <br> generations.
                     </p>
                     <button class="btn bg-[#FACC15] rounded-[999px] border-none text-[#15803D]">
                         Get Involved
@@ -67,18 +91,18 @@
                 </div>
             </div>
             <div
-                class=" bg-none md:bg-[url('./assets/hero-leaf2.png')] h-0 w-0  md:h-64 md:w-96 md:min-h-[350px] md:absolute md:left-[1350px] ">
+                class=" bg-[url('./assets/hero-leaf2.png')] h-56 w-64  md:h-64 md:w-96 md:min-h-[350px] right-0   absolute bottom-0 md:bottom-0   md:left-[930px] ">
             </div>
         </section>
-        <section class=" bg-[#dcfce7] min-h-[600px]">
-            <h1 class="text-center text-3xl pt-24 font-semibold ">Choose Your Trees</h1>
-            <div class="w-15/16 mx-auto  grid grid-cols-15  pt-10">
-                <div class="col-span-3 pr-6 text-start pl-16">
-                    <h1 class="text-black text-xl font-semibold mb-4 text-start pl-1.5 ">Categories</h1>
-                    <div id="js-catgory-container">
+        <section class="  bg-[#dcfce7] min-h-[600px] max-w-[1640px] mx-auto ">
+            <h1 class="text-center text-3xl -mb-4 md:mb-0 pt-10 md:pt-24 font-semibold ">Choose Your Trees</h1>
+            <div class="w-15/16 mx-auto   grid grid-cols-1 md:grid-cols-[repeat(15,1fr)]   pt-10">
+                <div class=" col-span-1  md:col-span-3 md:pr-6 text-center md:text-start ">
+                    <h1 class="text-black text-xl font-semibold mb-4 text-center md:text-start pl-1.5 ">Categories</h1>
+                    <div id="js-catgory-container" class="">
 
                         <button id="js-all-catagorybtn" onclick="loadAllPlantsClick ()"
-                            class="btn flex justify-start pl-3 active bg-[#dcfce7]  border-none w-full mb-1 catButton  hover:bg-[#27d564cd] hover:text-white">
+                            class="btn flex justify-center md:justify-start   md:pl-3 active bg-[#dcfce7]  border-none w-full mb-1 catButton  hover:bg-[#27d564cd] hover:text-white">
                             All Trees
                         </button>
 
@@ -86,26 +110,26 @@
 
                 </div>
 
-                <div class=" col-span-9  ">
+                <div class=" col-span-1 md:col-span-9  ">
 
-                    <div id="js-plant-container" class="grid grid-cols-3 gap-10">
+                    <div id="js-plant-container" class="grid grid-cols-1 md:grid-cols-3 gap-10">
 
                     </div>
 
                 </div>
-                <div class=" col-span-3 ml-7 rounded-lg bg-white p-5">
+                <div class=" hidden md:grid col-span-3 ml-7 rounded-lg bg-white p-5">
                     <div id="js-shop-card">
                         <h1 class="text-xl font-semibold pb-4">Your Cart</h1>
-                        <div id="js-shop-cart">
+                        <div class="js-shop-cart">
 
                         </div>
                         <div class="border-b-2 border-gray-200 mt-6"></div>
                         <div>
                             <div class="flex justify-between mt-3">
-                                <h1  class="font-semibold">Total price:</h1>
-                                <div class="font-medium"><span id="js-total-price" >0</span> TK </div>
+                                <h1 class="font-semibold">Total price:</h1>
+                                <div class="font-medium"><span class="js-total-price">0</span> TK </div>
                             </div>
-                        
+
 
                         </div>
                     </div>
@@ -115,7 +139,7 @@
             </div>
         </section>
 
-        <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
+        <dialog id="plant_modal" class="modal modal-start md:modal-middle">
             <div class="modal-box">
                 <div id="details-container" class="space-y-5">
 
@@ -130,9 +154,36 @@
             </div>
 
 
+           
 
 
     </main>
+     <div id="cartModal" class="fixed inset-0 bg-black/50 bg-opacity-50 hidden    z-50">
+                <div class="bg-white  min-h-50 rounded-lg shadow-lg w-80 p-6 absolute top-10 right-8 ">
+                    <!-- Close button -->
+                    <button class="absolute top-2 right-2 text-gray-600 hover:text-red-500"
+                        onclick="toggleModal(false)">
+                        ✖
+                    </button>
+                     <div id="js-shop-card">
+                        <h1 class="text-xl font-semibold pb-4">Your Cart</h1>
+                        <div class="js-shop-cart">
+
+                        </div>
+                        <div class="border-b-2 border-gray-200 mt-6"></div>
+                        <div>
+                            <div class="flex justify-between mt-3">
+                                <h1 class="font-semibold">Total price:</h1>
+                                <div class="font-medium"><span class="js-total-price">0</span> TK </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+               
+                </div>
+            </div>
     <div id="custom-valid-alert" class=" fixed inset-0 bg-black/50 flex  justify-center z-50 py-2 px-2  ">
         <div class=" rounded-lg py-5 max-w-sm w-full text-left shadow-lg h-[150px] bg-[#3f3228dc]">
             <p class="text-white px-4 text-sm">green-earth-prep-netify.app.says</p>
