@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- tailwind cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- daiwsy cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="inter-font-family bg-[#CFF0DC]">
+    <header class="bg-[#15803D] ">
+        <div class="navbar bg-base-100  w-11/12 mx-auto bg-[#15803D] ">
+            <div class="navbar-start">
+                <div class="dropdown ">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle  lg:hidden ">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h7" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <li><a>About</a></li>
+                        <li><a>Gallery</a></li>
+                        <li><a>Plant a Tree</a></li>
+                    </ul>
+                </div>
+                <h1 class="text-white text-xl font-semibold t">Green Earth</h1>
+
+            </div>
+            <div class="navbar-center ">
+                <ul class="hidden md:flex  gap-4 text-white font-normal text-[16px] cursor-pointer">
+                    <li><a>About</a></li>
+                    <li><a>Gallery</a></li>
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <button class="btn bg-[#FACC15] rounded-[999px] border-none text-[#15803D]">Plant a Tree</button>
+            </div>
+        </div>
+    </header>
+    <main class="">
+        <section
+            class="hero min-h-[350px]  bg-none md:bg-[url('/assets/hero-leaf1.png')] md:w-96 md:h-64 z-20 md:ml-20 relative">
+            <div class="hero-content text-center ">
+                <div class=" max-w-full md:w-[1500px] md:pl-[500px]">
+                    <h1 class="text-5xl text-[#1f2937] font-bold">Plant a Tree, Grow a Future</h1>
+                    <p class="py-6 text-[#1f2937] font-light">
+                        Join our mission to plant 1 million trees and make the Earth greener for future generations.
+                    </p>
+                    <button class="btn bg-[#FACC15] rounded-[999px] border-none text-[#15803D]">
+                        Get Involved
+                    </button>
+                </div>
+            </div>
+            <div
+                class=" bg-none md:bg-[url('/assets/hero-leaf2.png')] h-0 w-0  md:h-64 md:w-96 md:min-h-[350px] md:absolute md:left-[1350px] ">
+            </div>
+        </section>
+        <section class=" bg-[#dcfce7] min-h-[600px]">
+            <h1 class="text-center text-3xl pt-24 font-semibold ">Choose Your Trees</h1>
+            <div class="w-15/16 mx-auto  grid grid-cols-15  pt-10">
+                <div class="col-span-3 pr-6 text-start pl-16">
+                    <h1 class="text-black text-xl font-semibold mb-4 text-start pl-1.5 ">Categories</h1>
+                    <div id="js-catgory-container">
+
+                        <button id="js-all-catagorybtn" onclick="loadAllPlantsClick ()"
+                            class="btn flex justify-start pl-3 active bg-[#dcfce7]  border-none w-full mb-1 catButton  hover:bg-[#27d564cd] hover:text-white">
+                            All Trees
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class=" col-span-9  ">
+
+                    <div id="js-plant-container" class="grid grid-cols-3 gap-10">
+
+                    </div>
+
+                </div>
+                <div class=" col-span-3 ml-7 rounded-lg bg-white p-5">
+                    <div id="js-shop-card">
+                        <h1 class="text-xl font-semibold pb-4">Your Cart</h1>
+                        <div id="js-shop-cart">
+
+                        </div>
+                        <div class="border-b-2 border-gray-200 mt-6"></div>
+                        <div>
+                            <div class="flex justify-between mt-3">
+                                <h1  class="font-semibold">Total price:</h1>
+                                <div class="font-medium"><span id="js-total-price" >0</span> TK </div>
+                            </div>
+                        
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <dialog id="plant_modal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="details-container" class="space-y-5">
+
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+    </main>
+    <div id="custom-valid-alert" class=" fixed inset-0 bg-black/50 flex  justify-center z-50 py-2 px-2  ">
+        <div class=" rounded-lg py-5 max-w-sm w-full text-left shadow-lg h-[150px] bg-[#3f3228dc]">
+            <p class="text-white px-4 text-sm">green-earth-prep-netify.app.says</p>
+            <div class="flex px-4 items-center mb-3">
+
+
+                <p id="js-valid-text" class="text-white text-[13px]  font-extralight"></p>
+
+            </div>
+            <div class="inline-block border-2 border-black rounded-full p-1 bg-pink-100 relative left-64">
+                <button onclick="hideValidAlert()"
+                    class="bg-pink-100 text-black px-7 py-3 rounded-full shadow border-2 border-black ">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <script src="script/index.js"></script>
+</body>
+
+</html>
