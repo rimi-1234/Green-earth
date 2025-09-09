@@ -8,6 +8,15 @@ const removeActive = () => {
     //   console.log(lessonButtons);
     catButton.forEach((btn) => btn.classList.remove("active"));
 };
+const manageSpinner = (status) => {
+    if (status == true) {
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("js-plant-container").classList.add("hidden");
+    } else {
+        document.getElementById("js-plant-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+};
 function toggleModal(show) {
 
 
@@ -24,6 +33,7 @@ function toggleModal(show) {
 }
 
 const loadAllCategory = () => {
+
     fetch("https://openapi.programming-hero.com/api/categories")
         .then((res) => res.json())
         .then((json) => {
@@ -32,6 +42,7 @@ const loadAllCategory = () => {
         });
 };
 const loadAllPlants = () => {
+    manageSpinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
         .then((json) => {
@@ -42,6 +53,7 @@ const loadAllPlants = () => {
 
 };
 const loadAllPlantsClick = () => {
+    manageSpinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then((res) => res.json())
         .then((json) => {
@@ -54,6 +66,7 @@ const loadAllPlantsClick = () => {
 
 };
 const loadCategory = (id) => {
+    manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
         .then((res) => res.json())
@@ -104,6 +117,8 @@ const disPlayPlant = (plant) => {
     
     `;
     document.getElementById('plant_modal').showModal();
+    manageSpinner(false);
+
 
 
 }
@@ -206,7 +221,7 @@ const handleCountAndPrice = (treePrice, count) => {
     })
 
 }
-const handleDecressPrice=(treePrice)=>{
+const handleDecressPrice = (treePrice) => {
     totalPrice = totalPrice - treePrice;
 
     const newTotalPrice = document.querySelectorAll(".js-total-price");
@@ -216,34 +231,33 @@ const handleDecressPrice=(treePrice)=>{
     })
 
 }
+
 const handleDeleteBtnCross = (treeid) => {
-    // console.log(showCart.treeId);
-    // console.log(treeid);
+    // console.log(showCart.treeId)
 
 
 
-    const filtereshowCart = showCart.filter(ele => {
-        if (Number(treeid) !== Number(ele.treeId)) {
-            return ele;
+    let filterprice = [...showCart];
 
-        }
 
-    });
 
-    const filterPrice = showCart.filter(ele => {
-        if (Number(treeid) === Number(ele.treeId)) {
-            return ele;
+    const price = filterprice.find(item => Number(item.treeId) === Number(treeid));
 
-        }
 
-    });
+    const index = showCart.findIndex(item => Number(item.treeId) === Number(treeid));
 
-    filterPrice.forEach(element => {
-         handleDecressPrice(element.treePrice)
-         
-    });
-    
-    showCart = filtereshowCart
+
+    if (index !== -1) {
+        showCart.splice(index, 1);
+    }
+
+
+    handleDecressPrice(price.treePrice);
+
+
+
+
+
     const count = document.getElementById("js-shopCart-count").innerText;
     qnt = Number(count) - 1;
     document.getElementById("js-shopCart-count").innerText = qnt;
@@ -272,7 +286,7 @@ const displayAllPlants = (plants) => {
     plants.forEach((plant) => {
         plantContainer.innerHTML += `     <div class="card bg-base-100 shadow-sm ">
                         <figure class="p-3">
-                            <img class="w-96 h-64 md:h-40 rounded-md" src=${plant.image}
+                            <img class="md:w-96 w-full h-64 md:h-40 rounded-md" src=${plant.image}
                                 alt="plantimages" />
                         </figure>
                         <div class=" text-start px-3 ">
@@ -290,10 +304,12 @@ const displayAllPlants = (plants) => {
                `
 
     });
+    manageSpinner(false);
 
 }
 
 const loadPlant = (id) => {
+    manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/plant/${id}`
     fetch(url)
         .then((res) => res.json())
@@ -309,6 +325,7 @@ const loadPlant = (id) => {
 // "small_description": "Trees that remain green throughout the year."
 const displayCategory = (categories) => {
     //   categoryContainer.innerHTML='';
+
     categories.forEach((cat) => {
         categoryContainer.innerHTML += ` 
         

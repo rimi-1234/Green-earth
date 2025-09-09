@@ -58,7 +58,7 @@
                 <div class="relative md:hidden">
                     <button onclick="toggleModal(true)">
 
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-gray-900" fill="none"
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white font-normal" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2 9m5-9v9m6-9v9m2-18h-6" />
@@ -95,6 +95,10 @@
             <div
                 class=" bg-[url('./assets/hero-leaf2.png')] h-56 w-64  md:h-64 md:w-96 md:min-h-[350px] right-0   absolute bottom-0 md:bottom-0   md:left-[930px] ">
             </div>
+        </section>
+
+        <section id="spinner" class="flex justify-center items-center relative top-[650px] md:top-48 hidden">
+            <span class="loading loading-bars loading-xl"></span>
         </section>
         <section class="  bg-[#dcfce7] min-h-[600px] max-w-[1640px] mx-auto ">
             <h1 class="text-center text-3xl -mb-4 md:mb-0 pt-10 md:pt-24 font-semibold ">Choose Your Trees</h1>
@@ -140,7 +144,7 @@
 
             </div>
         </section>
-        <section class="  bg-[#dcfce7] min-h-[600px] pt-0 md:pt-7 ">
+             <section class="  bg-[#dcfce7]    min-h-[600px] pt-0 md:pt-7 ">
 
 
             <h1 class=" text-2xl text-center font-semibold py-4 pt-10">About the Campaign</h1>
@@ -148,7 +152,7 @@
             <div class="hero  h-auto w-full   md:w-10/16 mx-auto">
 
                 <div class="hero-content w-full flex-col md:flex-row-reverse">
-                    <div class="text-center md:text-left">
+                    <div class="text-center   md:text-left">
                         <h1 class="text-[12px] font-light">Green Earth is a global tree plantation initiative dedicated
                             to fighting <br> climate change. Since our start, we’ve planted over 500,000 trees <br>
                             worldwide. By joining our campaign, you help restore forests,
@@ -160,8 +164,8 @@
                         </ul>
 
                     </div>
-                    <div class="card   ">
-                        <div class="card-body w-[400px]  h-[300px] md:w-[500px] md:h-[500px]">
+                    <div class="card  ">
+                        <div class="card-body w-[300px]  h-[300px] md:w-[500px] md:h-[500px]">
                             <img src="./assets/about.png" alt="" class="w-full h-full">
                         </div>
                     </div>
@@ -175,12 +179,12 @@
 
 
         </section>
-        <section class="  bg-[#CFF0DC] min-h-[300px] pt-0 md:pt-7 md:w-15/16 mx-auto ">
+        <section class="  bg-[#CFF0DC] min-h-[300px] pt-0 md:pt-7 md:w-15/16 mx-auto   ">
 
             <h1 class=" text-2xl text-center font-semibold pb-5 pt-6">Our Impact</h1>
 
-            <div class=" ml-8  md:w-15/16 mx-auto  grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-30 text center ">
-                <div class="card card-dash bg-base-100 w-[420px] text-center h-36  ">
+            <div class=" justify-items-center md:w-15/16 mx-auto   grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-30 text center ">
+                <div class="card card-dash bg-base-100 w-[320px] md:w-[420px] text-center h-36  ">
                     <div class="card-body flex justify-center items-center text-center">
                         <h1 class="text-[#15803d] font-medium text-3xl">500K+</h1>
                         <div class="text-[12px] font-light pr-3">
@@ -189,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="card card-dash bg-base-100 w-[420px] text-center h-36  ">
+                <div class="card card-dash bg-base-100 w-[320px] md:w-[420px] text-center h-36  ">
                     <div class="card-body flex justify-center items-center text-center">
                         <h1 class="text-[#15803d] font-medium text-3xl">120+</h1>
                         <div class="text-[12px] font-light pr-3">
@@ -197,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-dash bg-base-100 w-[420px] text-center h-36  ">
+                <div class="card card-dash bg-base-100 w-[320px] md:w-[420px] text-center h-36  ">
                     <div class="card-body flex justify-center items-center text-center">
                         <h1 class="text-[#15803d] font-medium text-3xl">30+</h1>
                         <div class="text-[12px] font-light pr-3">
@@ -216,12 +220,12 @@
 
 
         </section>
-        <section class="  bg-[#166534] min-h-[300px] mt-9 md:mt-0 pt-0 md:pt-7  ">
+        <section class="   bg-[#166534] min-h-[300px] mt-9 md:mt-0 pt-0 md:pt-7  ">
 
             <h1 class=" text-2xl text-center text-white font-medium pb-5 pt-8 md:pt-6">Plant a Tree Today</h1>
             <div class="hero max-h-[600px]">
                 <div class="hero-content text-center">
-                    <fieldset class="fieldset bg-[#15803D] border-none rounded-box w-96 shadow-md p-4">
+                    <fieldset class="fieldset bg-[#15803D] border-none rounded-box md:w-96 shadow-md p-4">
 
 
 
@@ -278,7 +282,7 @@
 
 
     </main>
-    <div id="cartModal" class="fixed inset-0 bg-black/50 bg-opacity-50 hidden    z-50">
+    <div id="cartModal" class="fixed inset-0 bg-black/50 bg-opacity-50 hidden overflow-y-scroll   z-50">
         <div class="bg-white  min-h-50 rounded-lg shadow-lg w-80 p-6 absolute top-10 right-8 ">
             <!-- Close button -->
             <button class="absolute top-2 right-2 text-gray-600 hover:text-red-500" onclick="toggleModal(false)">
