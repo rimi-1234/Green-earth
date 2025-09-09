@@ -10,10 +10,10 @@ const removeActive = () => {
 };
 function toggleModal(show) {
 
-    
+
     const modal = document.getElementById('cartModal');
 
-    
+
     if (show) {
         modal.classList.remove('hidden');
         modal.classList.add('flex'); // make it flexbox centered
@@ -121,32 +121,28 @@ plantContainer.addEventListener("click", function (e) {
 
 })
 let totalPrice = 0
-let qnt=0;
+let qnt = 0;
 const handleShopcarts = (e) => {
     const treeName = e.target.parentNode.children[0].innerText;
 
     const treePrice = e.target.parentNode.children[2].children[1].children[0].innerText;
     const uniqueTreeId = e.target.parentNode.children[0].id;
-    const count=document.getElementById("js-shopCart-count").innerText;
+    const count = document.getElementById("js-shopCart-count").innerText;
+    handleCountAndPrice(treePrice, count);
 
-    qnt=Number(count)+1;
-    document.getElementById("js-shopCart-count").innerText=qnt;
-    totalPrice = totalPrice + Number(treePrice);
 
-    const newTotalPrice = document.querySelectorAll(".js-total-price");
-    newTotalPrice.forEach(ele=>{
-        ele.innerText=totalPrice;
-        
-    })
-    
-     
+
+
+
 
 
 
     showCart.push({
         treeName: treeName,
         treePrice: treePrice,
+        treeId: uniqueTreeId
     });
+
 
 
     showCartDetail(showCart);
@@ -154,13 +150,16 @@ const handleShopcarts = (e) => {
 };
 
 const showCartDetail = (showCart) => {
-   
 
-    shopCart.forEach(ele=>{
+    // console.log(showCart);
 
-            ele.innerHTML = '';
-            showCart.forEach(showCart => {
-                ele.innerHTML += `
+    shopCart.forEach(ele => {
+
+        ele.innerHTML = '';
+        showCart.forEach(showCart => {
+
+
+            ele.innerHTML += `
                           <div class="bg-[#dcfce7]  p-4 rounded-lg mb-4">
                                 <div class="flex justify-between items-center">
                                     <div>
@@ -170,19 +169,19 @@ const showCartDetail = (showCart) => {
                                                      <span id="js-qnt">1</span>
                                             </p>
                                      </div>
-                                           <i class="fa-solid fa-xmark text-red-700"></i>
+                                           <i onclick="handleDeleteBtnCross(${showCart.treeId})" class="cursor-pointer fa-solid fa-xmark text-red-700"></i>
                                  </div>
                             </div>                        
                 
                             `
-        
-        
-        
-        
-        
-            });
+
+
+
+
+
+        });
     })
-    
+
 
 
 
@@ -195,6 +194,70 @@ const showCartDetail = (showCart) => {
 
 }
 
+const handleCountAndPrice = (treePrice, count) => {
+    qnt = Number(count) + 1;
+    document.getElementById("js-shopCart-count").innerText = qnt;
+    totalPrice = totalPrice + Number(treePrice);
+
+    const newTotalPrice = document.querySelectorAll(".js-total-price");
+    newTotalPrice.forEach(ele => {
+        ele.innerText = totalPrice;
+
+    })
+
+}
+const handleDecressPrice=(treePrice)=>{
+    totalPrice = totalPrice - treePrice;
+
+    const newTotalPrice = document.querySelectorAll(".js-total-price");
+    newTotalPrice.forEach(ele => {
+        ele.innerText = totalPrice;
+
+    })
+
+}
+const handleDeleteBtnCross = (treeid) => {
+    // console.log(showCart.treeId);
+    // console.log(treeid);
+
+
+
+    const filtereshowCart = showCart.filter(ele => {
+        if (Number(treeid) !== Number(ele.treeId)) {
+            return ele;
+
+        }
+
+    });
+
+    const filterPrice = showCart.filter(ele => {
+        if (Number(treeid) === Number(ele.treeId)) {
+            return ele;
+
+        }
+
+    });
+
+    filterPrice.forEach(element => {
+         handleDecressPrice(element.treePrice)
+         
+    });
+    
+    showCart = filtereshowCart
+    const count = document.getElementById("js-shopCart-count").innerText;
+    qnt = Number(count) - 1;
+    document.getElementById("js-shopCart-count").innerText = qnt;
+
+
+    showCartDetail(showCart);
+
+
+    //    const filteredBookmarks =  bookmarks.filter(bookmark => bookmark.id !== bookmarkId)
+
+    //    bookmarks = filteredBookmarks
+    //    showBookmarks(bookmarks)
+
+}
 // "id": 1,
 // "image": "https://i.ibb.co.com/cSQdg7tf/mango-min.jpg",
 // "name": "Mango Tree",
